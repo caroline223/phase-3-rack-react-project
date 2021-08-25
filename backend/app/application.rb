@@ -9,6 +9,11 @@ class Application
       return [200, { 'Content-Type' => 'application/json' }, [ tasks.to_json ]]
       #message: taking a message hash and converting it to json server
 
+    elsif req.path.match(/categories/) && req.get?
+      categories = Category.all
+      return [200, { 'Content-Type' => 'application/json' }, [ categories.to_json ]]
+
+
     elsif req.path.match(/tasks/) && req.post?
      data = JSON.parse  req.body.read #takes sthg that is json and parse it and turn it into ruby
      task = Task.create(data)
