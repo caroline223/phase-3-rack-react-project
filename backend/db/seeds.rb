@@ -3,12 +3,12 @@ require 'faker'
 
 #to create more than one category
 
-10.times do 
-
+30.times do
+    Author.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
 end
 
-20.times do
+300.times do
     #sample pulls a random element out of an array 
-    id = Category.all.sample.id
-    Task.create(text: Faker::Verb.base + " " + Faker::Name.name, category_id: 1)
+    id = Author.all.sample.id
+    Book.create(title: Faker::Book.title, genre: Faker::Book.genre, publishing_date: Faker::Date.backward, author_id: id)
 end
