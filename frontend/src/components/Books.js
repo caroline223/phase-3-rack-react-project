@@ -14,24 +14,40 @@ class Books extends React.Component {
         .then((books) => this.setState({ books }));
     }
 
-    renderBooks = () => {
-        return this.state.books.map((book) => {
-            return <ul>
-                    <li>{book.title}</li>
-                    <li>{book.genre}</li>
-                    <li>{book.author_id}</li>
-                    <li>{book.publishing_date}</li>
-                    <br />
-                </ul>
-        });
+    
+    renderBookData() {
+        return this.state.books.map((book, id) => {
+            const {title, genre, author_id, publishing_date, rating} = book
+            return (
+                <tr key={id}>
+                    <td>{title}</td>
+                    <td>{genre}</td>
+                    <td>{author_id}</td>
+                    <td>{publishing_date}</td>
+                    <td>{rating}</td>
+                </tr>
+            )
+        })
     }
+
+    
 
 
     render() {
         return (
             <div>
-                
-                <ul>{this.renderBooks()}</ul>
+               <table>
+                   <tbody>
+                       <tr>
+                           <th>Title</th>
+                           <th>Genre</th>
+                           <th>Author ID</th>
+                           <th>Date Published</th>
+                           <th>Rating</th>
+                       </tr>
+                       {this.renderBookData()}
+                   </tbody>
+               </table>
             </div>
             
         );     

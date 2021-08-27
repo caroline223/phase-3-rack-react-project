@@ -15,17 +15,29 @@ class Authors extends React.Component {
     }
 
     renderAuthors = () => {
-        return this.state.authors.map((author) => {
-            return <p>{author.first_name} {author.last_name}</p>
+        return this.state.authors.map((author, id) => {
+            const {first_name, last_name} = author
+            return (
+                <tr key={id}>
+                    <td>{first_name}</td>
+                    <td>{last_name}</td>
+                </tr>
+            )
         });
     }
 
 
     render() {
         return (
-            <div>
-                <ul>{this.renderAuthors()}</ul>
-            </div>
+           <table>
+               <tbody>
+                   <tr>
+                       <th>First Name</th>
+                       <th>Last Name</th>
+                   </tr>
+                   {this.renderAuthors()}
+               </tbody>
+           </table>
             
         );     
     }
