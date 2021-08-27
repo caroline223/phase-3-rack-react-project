@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_08_25_232233) do
     t.string "genre"
     t.integer "author_id"
     t.date "publishing_date"
+    t.integer "rating"
   end
 
 end
