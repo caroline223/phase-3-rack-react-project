@@ -1,17 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import BookSearch from '../components/BookSearch';
+
 
 class Books extends React.Component {
     
     state = {
-        books : []
+        books: [],
+
+        searchInput: ''
     }
 
 
     componentDidMount() {
         fetch('http://localhost:9292/books')
         .then(response => response.json())
-        .then((books) => this.setState({ books }));
+        .then((books) => this.setState({  books }));
     }
 
     
@@ -31,11 +34,31 @@ class Books extends React.Component {
     }
 
     
+    filterSearchByInput = (input) => {
+        console.log(input)
+        return this.state.books.filter(book => book.genre.toLowerCase().includes(input.toLowerCase())) 
+
+    }
+
+    handleSearchInput = (event) => {
+        this.setState({
+            searchInput: event.target.value
+        })
+
+        if(event.target.value === '' ) {
+            this.setState({ books: [...this.state.books]})
+        } else {
+            this.setState({ books: this.filterSearchByInput(event.target.value)})
+        }
+
+    }
 
 
     render() {
         return (
             <div>
+                <h1>Catalog</h1>
+                <BookSearch handleSearchInput={this.handleSearchInput} />
                <table>
                    <tbody>
                        <tr>
@@ -43,7 +66,7 @@ class Books extends React.Component {
                            <th>Genre</th>
                            <th>Author ID</th>
                            <th>Date Published</th>
-                           <th>Rating</th>
+                           <th>Rating (out of 10)</th>
                        </tr>
                        {this.renderBookData()}
                    </tbody>
