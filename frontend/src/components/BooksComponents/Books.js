@@ -39,9 +39,9 @@ class Books extends React.Component {
         })
 
         if(event.target.value === '' ) {
-            this.setState({ books: [...this.state.books]})
+            this.setState({ renderedBooks: [...this.state.books]})
         } else {
-            this.setState({ books: this.filterSearchByInput(event.target.value)})
+            this.setState({ renderedBooks: this.filterSearchByInput(event.target.value)})
         }
 
     }
