@@ -19,16 +19,16 @@ class BooksInfo extends React.Component {
               <Card.Content >
                   <Card.Header>
                       {title} <br />
-                      {price}
+                      ${price}
                   </Card.Header>
                   <Card.Description>
                       {genre}
                       <br />
-                      {author_id}
+                      Author ID: {author_id}
                       <br />
-                      {publishing_date}
+                      Date Published: {publishing_date}
                       <br />
-                      {rating}
+                      Rating: {rating}/10
                   </Card.Description>
               </Card.Content>
           </Card>
