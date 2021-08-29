@@ -1,5 +1,7 @@
 import React from 'react'
+import randomPhoto from '../AuthorsComponents/AuthorsPhotos'
 import { Card } from 'semantic-ui-react'
+
 
 class AuthorsInfo extends React.Component {
 
@@ -16,6 +18,7 @@ class AuthorsInfo extends React.Component {
         return (
           <Card style={layout.card}>
               <Card.Content >
+                {randomPhoto}
                   <Card.Header>
                       {first_name} {last_name}
                   </Card.Header>

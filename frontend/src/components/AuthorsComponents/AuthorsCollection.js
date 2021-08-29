@@ -7,9 +7,11 @@ class AuthorsCollection extends React.Component {
 
     render() {
         return (
-            <Card.Group itemsPerRow={4}>
-                {this.props.authors.map((authorObj, id) => <AuthorsInfo key={id} authors={authorObj} />)}
-            </Card.Group>
+            <div>
+                <Card.Group itemsPerRow={4}>
+                    {this.props.authors.map((authorObj, id) => <AuthorsInfo key={id} authors={authorObj} />)}
+                </Card.Group>
+            </div>
         )
     }
 

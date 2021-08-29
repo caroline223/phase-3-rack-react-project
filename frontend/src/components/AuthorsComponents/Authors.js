@@ -7,7 +7,9 @@ class Authors extends React.Component {
     
     state = {
         authors: [],
-        renderedAuthors: []
+        renderedAuthors: [],
+        currentPage: 1,
+        cardsPerPage: 10,    
     }
 
 
